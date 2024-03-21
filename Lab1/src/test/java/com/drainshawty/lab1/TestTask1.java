@@ -23,7 +23,7 @@ public class TestTask1 {
     static void init() {random = new Random();}
 
     @BeforeEach
-    public void newX() {randomX = random.nextDouble() * 2 - 1;}
+    void newX() {randomX = random.nextDouble() * 2 - 1;}
 
     @ParameterizedTest
     @CsvSource({
