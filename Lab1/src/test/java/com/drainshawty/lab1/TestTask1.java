@@ -19,10 +19,14 @@ public class TestTask1 {
     private static final double EPSILON = 0.001;
     private static Random random;
 
+    private static double randomX;
+
+    private static int counter = -1;
+
+    private static double newX() {counter++; return counter % 2 == 0 ? (randomX = random.nextDouble() * 2 - 1) : randomX;}
+
     @BeforeAll
-    static void init() {
-        random = new Random();
-    }
+    static void init() {random = new Random();}
 
     @ParameterizedTest
     @CsvSource({
@@ -43,13 +47,8 @@ public class TestTask1 {
             Double.POSITIVE_INFINITY,
             Double.NEGATIVE_INFINITY
     })
-    void testAsinOutsideRange(double x) {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Asin.of(x));
-    }
+    void testAsinOutsideRange(double x) {Assertions.assertThrows(IllegalArgumentException.class, () -> Asin.of(x));}
 
     @RepeatedTest(100)
-    void testAsinRandomValues() {
-        double x = random.nextDouble() * 2 - 1;
-        assertEquals(Math.asin(x), Asin.of(x), EPSILON);
-    }
+    void testAsinRandomValues() {assertEquals(Math.asin(newX()), Asin.of(newX()), EPSILON);}
 }
