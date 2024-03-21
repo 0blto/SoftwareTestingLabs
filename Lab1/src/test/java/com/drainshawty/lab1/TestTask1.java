@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestTask1 {
@@ -43,7 +44,7 @@ public class TestTask1 {
             Double.POSITIVE_INFINITY,
             Double.NEGATIVE_INFINITY
     })
-    void testAsinOutsideRange(double x) {Assertions.assertThrows(IllegalArgumentException.class, () -> Asin.of(x));}
+    void testAsinOutsideRange(double x) {assertThrows(IllegalArgumentException.class, () -> Asin.of(x));}
 
     @RepeatedTest(100)
     void testAsinRandomValues() {assertEquals(Math.asin(randomX), Asin.of(randomX), EPSILON);}

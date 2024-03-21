@@ -7,19 +7,19 @@ public class Graph {
     private final LinkedList<LinkedList<Integer>> adj;
 
     public Graph(int v) {
+        if (v <= 0) throw new IllegalArgumentException("Number of vertexes should be int in range [0; 2 147 483 647]");
         this.V = v;
         this.adj = new LinkedList<>();
         for(int i = 0; i < v; i++) this.adj.add(new LinkedList<>());
     }
 
-    private void newWay(int v, int w) {this.adj.get(v).add(w); this.adj.get(w).add(v);}
-
     public void addEdge(int v, int w) {
-        if (!this.adj.get(v).contains(w) && !this.adj.get(w).contains(v)) newWay(v, w);
-        else throw new IllegalArgumentException("This edge already exists");
+        if (this.adj.get(v).contains(w) || this.adj.get(w).contains(v)) throw new IllegalArgumentException("This edge already exists");
+        this.adj.get(v).add(w);
+        this.adj.get(w).add(v);
     }
 
-    List<Integer> BFS(int vertex) {
+    public List<Integer> BFS(int vertex) {
         List<Integer> order = new ArrayList<>();
         Queue<Integer> queue = new LinkedList<>();
         boolean[] nodes = new boolean[this.V];
