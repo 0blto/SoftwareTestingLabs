@@ -1,10 +1,7 @@
 package com.drainshawty.lab1;
 
 import com.drainshawty.lab1.task1.Asin;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -21,12 +18,11 @@ public class TestTask1 {
 
     private static double randomX;
 
-    private static int counter = -1;
-
-    private static double newX() {counter++; return counter % 2 == 0 ? (randomX = random.nextDouble() * 2 - 1) : randomX;}
-
     @BeforeAll
     static void init() {random = new Random();}
+
+    @BeforeEach
+    public void newX() {randomX = random.nextDouble() * 2 - 1;}
 
     @ParameterizedTest
     @CsvSource({
@@ -50,5 +46,5 @@ public class TestTask1 {
     void testAsinOutsideRange(double x) {Assertions.assertThrows(IllegalArgumentException.class, () -> Asin.of(x));}
 
     @RepeatedTest(100)
-    void testAsinRandomValues() {assertEquals(Math.asin(newX()), Asin.of(newX()), EPSILON);}
+    void testAsinRandomValues() {assertEquals(Math.asin(randomX), Asin.of(randomX), EPSILON);}
 }

@@ -12,11 +12,11 @@ public class Graph {
         for(int i = 0; i < v; i++) this.adj.add(new LinkedList<>());
     }
 
-    void addEdge(int v, int w) {
-        if (!this.adj.get(v).contains(w) && !this.adj.get(w).contains(v)) {
-            this.adj.get(v).add(w);
-            this.adj.get(w).add(v);
-        } else throw new IllegalArgumentException("This edge already exists");
+    private void newWay(int v, int w) {this.adj.get(v).add(w); this.adj.get(w).add(v);}
+
+    public void addEdge(int v, int w) {
+        if (!this.adj.get(v).contains(w) && !this.adj.get(w).contains(v)) newWay(v, w);
+        else throw new IllegalArgumentException("This edge already exists");
     }
 
     List<Integer> BFS(int vertex) {
