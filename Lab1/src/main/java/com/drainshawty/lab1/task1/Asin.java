@@ -7,4 +7,9 @@ public class Asin {
         for (int k = 1; k < 320000; k++) result += (term *= x * x * (2 * k - 1) * (2 * k - 1) / (2 * k) / (2 * k + 1));
         return result;
     }
+
+    public static void main(String[] args) {
+        System.out.println(Math.asin(0.05));
+        System.out.println(Math.asin(-0.05));
+    }
 }

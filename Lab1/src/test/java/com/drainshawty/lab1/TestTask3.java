@@ -6,6 +6,8 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -68,5 +70,17 @@ public class TestTask3 {
                     assertEquals(location.toString(), "[Sosnovka military base on x: 1,1, y: 1,1]");
                 }
         );
+    }
+
+    @Test
+    public void percentageTest() {
+        Timer timer = new Timer();
+        List<Boolean> values = new ArrayList<>();
+        assertFalse(timer.isTimeToChange());
+        for (int i = 0; i < 100; i++) {
+            timer.decision();
+            values.add(timer.isTimeToChange());
+        }
+        assertTrue(values.stream().map((k) -> k == Boolean.TRUE).count() > 10);
     }
 }
