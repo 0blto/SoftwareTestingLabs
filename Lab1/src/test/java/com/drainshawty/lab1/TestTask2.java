@@ -81,8 +81,8 @@ public class TestTask2 {
         graph.addEdge(0, 1);
         graph.addEdge(0, 3);
         graph.addEdge(3, 2);
-
         List<Integer> result = graph.BFS(0);
+        assertEquals(graph.getBFSQueues(), new ArrayList<>());
         assertEquals(0, (int) result.get(0));
         boolean[] visited = new boolean[5];
         for (Integer integer : result) visited[integer] = true;
@@ -91,5 +91,6 @@ public class TestTask2 {
         assertTrue(visited[2]);
         assertTrue(visited[3]);
         assertFalse(visited[4]);
+
     }
 }

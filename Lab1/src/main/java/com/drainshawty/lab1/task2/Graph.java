@@ -35,7 +35,7 @@ public class Graph {
             for(int i = 0; i < this.adj.get(vertex).size(); ++i) {
                 int a = this.adj.get(vertex).get(i);
                 if (!nodes[a]) {nodes[a] = true;queue.add(a);}
-                this.bfsQueues.add(queue);
+                this.bfsQueues.add(new LinkedList<>(queue));
             }
         }
         return order;
