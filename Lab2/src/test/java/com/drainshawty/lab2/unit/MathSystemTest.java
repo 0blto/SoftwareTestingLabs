@@ -23,12 +23,12 @@ public class MathSystemTest {
 
     @ParameterizedTest
     @CsvSource({
-            "0.0721, 0.1",
-            "0.0003, 0.99",
-            "0.2163, 0.001",
-            "-0.0217, 2.0",
-            "2.7787, -0.6",
-            "-0.9447, -2.5",
+            "0.00939155, 0.001",
+            "0.488559, 0.1",
+            "0.997374, 0.99",
+            "1.18945, 2.0",
+            "1, -0.001",
+            "0.980085, -3",
             "-0.3866, -3.6",
     })
     void testMathSystemCalculation(double expected, double x) {
