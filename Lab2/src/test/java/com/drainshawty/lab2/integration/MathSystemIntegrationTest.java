@@ -61,9 +61,11 @@ public class MathSystemIntegrationTest {
         MathSystem mathSystem = new MathSystem();
         setField(mathSystem, "sec", secMock);
         setField(mathSystem, "cot", cotMock);
+        setField(mathSystem, "tan", tanMock);
         double x = -Math.PI / 4;
         when(secMock.of(x)).thenReturn(Math.sqrt(2));
         when(cotMock.of(x)).thenReturn(1.0);
+        when(tanMock.of(x)).thenReturn(-1.0);
         assertEquals(0.85355, mathSystem.of(x), EPSILON);
     }
 
