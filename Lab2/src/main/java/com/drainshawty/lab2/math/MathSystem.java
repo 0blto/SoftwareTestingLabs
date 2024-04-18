@@ -1,7 +1,10 @@
 package com.drainshawty.lab2.math;
 
-import com.drainshawty.lab2.math.functions.logariphmic.*;
-import com.drainshawty.lab2.math.functions.trigonometric.*;
+import com.drainshawty.lab2.math.functions.logariphmic.Ln;
+import com.drainshawty.lab2.math.functions.logariphmic.Log;
+import com.drainshawty.lab2.math.functions.trigonometric.Cot;
+import com.drainshawty.lab2.math.functions.trigonometric.Sec;
+import com.drainshawty.lab2.math.functions.trigonometric.Tan;
 
 import static java.lang.Math.pow;
 
@@ -36,7 +39,9 @@ public class MathSystem extends MathFunction {
     @Override
     public double of(double x) {
         double result;
+        double eps = 1e-4;
         if (x <= 0) {
+            if (x == -Math.PI / 2) throw new ArithmeticException("Точка разрыва");
             double secValue = sec.of(x);
             double tanValue = tan.of(x);
             double cotValue = cot.of(x);
@@ -47,6 +52,7 @@ public class MathSystem extends MathFunction {
             double log10Value = log10.of(x);
             result = pow(((pow(log10Value, 2) + log2Value) / lnValue) / (log2Value / lnValue), 2);
         }
+        if (Double.isNaN(result)) throw new ArithmeticException();
         return result;
     }
 }

@@ -34,7 +34,7 @@ public class MathSystemTest {
     void testMathSystemCalculation(double expected, double x) {assertEquals(expected, mathSystem.of(x), EPSILON);}
 
     @ParameterizedTest
-    @ValueSource(doubles = {0.0, Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY})
+    @ValueSource(doubles = {0.0, Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, -Math.PI/2})
     void testInvalidCosCalculation(double x) {
         assertThrows(ArithmeticException.class, () -> mathSystem.of(x));
     }
