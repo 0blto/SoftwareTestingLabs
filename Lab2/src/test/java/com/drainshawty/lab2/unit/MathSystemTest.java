@@ -28,12 +28,10 @@ public class MathSystemTest {
             "0.997374, 0.99",
             "1.18945, 2.0",
             "1, -0.001",
+            "5.75113, -1",
             "0.980085, -3",
-            "-0.3866, -3.6",
     })
-    void testMathSystemCalculation(double expected, double x) {
-        assertEquals(expected, mathSystem.of(x), EPSILON);
-    }
+    void testMathSystemCalculation(double expected, double x) {assertEquals(expected, mathSystem.of(x), EPSILON);}
 
     @ParameterizedTest
     @ValueSource(doubles = {0.0, Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY})

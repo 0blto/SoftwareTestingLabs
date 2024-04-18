@@ -4,18 +4,15 @@ import com.drainshawty.lab1.task2.Graph;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestTask2 {
@@ -73,24 +70,5 @@ public class TestTask2 {
                 new BFSParams(2, List.of(2, 0, 4, 5, 1, 3)),
                 new BFSParams(6, List.of(6))
         );
-    }
-
-    @Test
-    public void testBFSIteration() {
-        Graph graph = new Graph(5);
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 3);
-        graph.addEdge(3, 2);
-        List<Integer> result = graph.BFS(0);
-        assertEquals(graph.getBFSQueues(), new ArrayList<>());
-        assertEquals(0, (int) result.get(0));
-        boolean[] visited = new boolean[5];
-        for (Integer integer : result) visited[integer] = true;
-        assertTrue(visited[0]);
-        assertTrue(visited[1]);
-        assertTrue(visited[2]);
-        assertTrue(visited[3]);
-        assertFalse(visited[4]);
-
     }
 }

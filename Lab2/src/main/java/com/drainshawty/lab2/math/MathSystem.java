@@ -46,7 +46,7 @@ public class MathSystem extends MathFunction {
             double secValue = sec.of(x);
             double tanValue = tan.of(x);
             double cotValue = cot.of(x);
-            result = (pow((pow(tanValue, 3) / cotValue), 2) + secValue)/ secValue;
+            result = (pow((pow(tanValue, 3) / cotValue), 2) + secValue) / pow(secValue, 3);
         } else {
             double lnValue = ln.of(x);
             double log2Value = log2.of(x);
