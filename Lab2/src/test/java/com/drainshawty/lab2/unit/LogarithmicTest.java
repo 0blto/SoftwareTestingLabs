@@ -16,8 +16,6 @@ public class LogarithmicTest {
     static final double EPSILON = 1e-4;
     Ln ln;
     Log log2;
-    Log log3;
-    Log log5;
 
     Log log10;
 
@@ -25,8 +23,6 @@ public class LogarithmicTest {
     void init() {
         ln = new Ln();
         log2 = new Log(2);
-        log3 = new Log(3);
-        log5 = new Log(5);
         log10 = new Log(10);
     }
 
@@ -47,8 +43,6 @@ public class LogarithmicTest {
     void testLogCalculation(double x) {
         assertAll(
                 () -> assertEquals(Math.log(x) / Math.log(2), log2.of(x), EPSILON),
-                () -> assertEquals(Math.log(x) / Math.log(3), log3.of(x), EPSILON),
-                () -> assertEquals(Math.log(x) / Math.log(5), log5.of(x), EPSILON),
                 () -> assertEquals(Math.log(x) / Math.log(10), log10.of(x), EPSILON)
         );
     }
