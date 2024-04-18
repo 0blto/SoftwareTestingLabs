@@ -7,8 +7,6 @@ import static java.lang.Math.pow;
 
 public class MathSystem extends MathFunction {
 
-    private final Sin sin;
-    private final Cos cos;
     private final Sec sec;
     private final Tan tan;
     private final Cot cot;
@@ -17,8 +15,6 @@ public class MathSystem extends MathFunction {
     private final Log log10;
 
     public MathSystem() {
-        this.sin = new Sin();
-        this.cos = new Cos();
         this.sec = new Sec();
         this.tan = new Tan();
         this.cot = new Cot();
@@ -29,8 +25,6 @@ public class MathSystem extends MathFunction {
 
     public MathSystem(double precision, int maxIterations) {
         super(precision, maxIterations);
-        this.sin = new Sin(precision, maxIterations);
-        this.cos = new Cos(precision, maxIterations);
         this.sec = new Sec(precision, maxIterations);
         this.tan = new Tan(precision, maxIterations);
         this.cot = new Cot(precision, maxIterations);
