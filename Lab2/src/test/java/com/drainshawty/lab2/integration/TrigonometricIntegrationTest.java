@@ -33,7 +33,7 @@ public class TrigonometricIntegrationTest {
         Cos cos = new Cos();
         setField(cos, "sin", sinSpy);
         cos.of(1);
-        verify(sinSpy, atLeastOnce()).of(anyDouble());
+        verify(sinSpy, times(1)).of(anyDouble());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class TrigonometricIntegrationTest {
         Sec sec = new Sec();
         setField(sec, "cos", cosSpy);
         sec.of(1);
-        verify(cosSpy, atLeastOnce()).of(anyDouble());
+        verify(cosSpy, times(1)).of(anyDouble());
     }
 
     @Test
@@ -67,8 +67,8 @@ public class TrigonometricIntegrationTest {
         setField(cot, "sin", sinSpy);
         setField(cot, "cos", cosSpy);
         cot.of(1);
-        verify(sinSpy, atLeastOnce()).of(anyDouble());
-        verify(cosSpy, atLeastOnce()).of(anyDouble());
+        verify(sinSpy, times(1)).of(anyDouble());
+        verify(cosSpy, times(1)).of(anyDouble());
     }
 
     @Test
