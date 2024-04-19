@@ -51,7 +51,8 @@ public class LogarithmicTest {
     void testInvalidLogCalculation() {
         assertAll(
                 () -> assertThrows(IllegalArgumentException.class, () -> new Log(0)),
-                () -> assertThrows(ArithmeticException.class, () -> log2.of(-1))
+                () -> assertThrows(ArithmeticException.class, () -> log2.of(-1)),
+                () -> assertThrows(ArithmeticException.class, () -> log10.of(-1))
         );
     }
 }
