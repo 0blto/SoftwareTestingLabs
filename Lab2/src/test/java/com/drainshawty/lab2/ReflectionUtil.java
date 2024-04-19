@@ -11,7 +11,7 @@ public class ReflectionUtil {
             Field targetField = ReflectionUtils.findFields(
                     object.getClass(),
                     field -> field.getName().equals(fieldName),
-                    ReflectionUtils.HierarchyTraversalMode.TOP_DOWN
+                    ReflectionUtils.HierarchyTraversalMode.BOTTOM_UP
             ).get(0);
             targetField.setAccessible(true);
             targetField.set(object, value);
