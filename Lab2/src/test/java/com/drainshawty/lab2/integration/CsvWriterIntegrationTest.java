@@ -41,12 +41,18 @@ public class CsvWriterIntegrationTest {
     void testMathSystemCalculationWithMockedTrigonometricFunctionValues() throws IOException {
         File file = new File(csvDirectory, "output.csv");
         CsvFunctionWriter csvFunctionWriter = new CsvFunctionWriter(file, ',');
+        when(systemMock.of(-1)).thenReturn(5.75112725);
+        when(systemMock.of(0)).thenThrow(ArithmeticException.class);
+        when(systemMock.of(1)).thenThrow(ArithmeticException.class);
         when(systemMock.of(2)).thenReturn(1.189449);
         when(systemMock.of(3)).thenReturn(1.307883);
         when(systemMock.of(4)).thenReturn(1.395322);
-        csvFunctionWriter.write(systemMock, 2, 4, 1);
+        csvFunctionWriter.write(systemMock, -1, 4, 1);
         assertEquals(
                 Arrays.asList(
+                        "-1.000000,5.751127",
+                        "0.000000,NaN",
+                        "1.000000,NaN",
                         "2.000000,1.189449",
                         "3.000000,1.307883",
                         "4.000000,1.395322"

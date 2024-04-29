@@ -8,7 +8,9 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.drainshawty.lab2.ReflectionUtil.setField;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -20,6 +22,13 @@ import static org.mockito.Mockito.*;
 public class LogarithmicIntegrationTest {
 
     static final double EPSILON = 1e-4;
+
+    static final Map<Double, Double> LNS = new HashMap<Double, Double>() {{
+        put(2.0, 0.69314);
+        put(8.0, 2.079441);
+        put(10.0, 2.302585);
+        put(100.0, 4.60517);
+    }};
     @Mock
     Ln lnMock;
     @Spy
@@ -43,10 +52,7 @@ public class LogarithmicIntegrationTest {
         Log log10 = new Log(10);
         setField(log2, "ln", lnMock);
         setField(log10, "ln", lnMock);
-        when(lnMock.of(8)).thenReturn(2.079441);
-        when(lnMock.of(2)).thenReturn(0.69314);
-        when(lnMock.of(10)).thenReturn(2.302585);
-        when(lnMock.of(100)).thenReturn(4.60517);
+        for (Double d : LNS.keySet()) when(lnMock.of(d)).thenReturn(LNS.get(d));
         assertAll(() -> {
             assertEquals(3, log2.of(8), EPSILON);
             assertEquals(2, log10.of(100), EPSILON);

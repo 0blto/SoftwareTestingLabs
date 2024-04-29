@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
 
+import static java.lang.Float.NaN;
+
 public class CsvFunctionWriter implements FunctionWriter {
 
     private final File file;
@@ -36,7 +38,8 @@ public class CsvFunctionWriter implements FunctionWriter {
             try {
                 double value = function.of(current);
                 printWriter.println(String.format(Locale.ENGLISH, "%f%c%f", current, separator, value));
-            } catch (ArithmeticException ignored) {
+            } catch (ArithmeticException ex) {
+                printWriter.println(String.format(Locale.ENGLISH, "%f%c%f", current, separator, NaN));
             }
         }
         printWriter.close();

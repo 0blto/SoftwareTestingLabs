@@ -55,4 +55,8 @@ public class MathSystem extends MathFunction {
         if (Double.isNaN(result)) throw new ArithmeticException();
         return result;
     }
+
+    public static void main(String[] args) {
+        System.out.println(new MathSystem().of(-1));
+    }
 }
