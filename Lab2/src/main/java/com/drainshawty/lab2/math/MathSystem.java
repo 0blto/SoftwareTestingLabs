@@ -56,7 +56,4 @@ public class MathSystem extends MathFunction {
         return result;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new MathSystem().of(-1));
-    }
 }
