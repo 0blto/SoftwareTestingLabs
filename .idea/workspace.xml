@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f12839c6-d9f8-4c4a-a3e0-dc7d7e59283f" name="Changes" comment="" />
+    <list default="true" id="f12839c6-d9f8-4c4a-a3e0-dc7d7e59283f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Lab3/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab3/src/main/java/com/drainshawty/lab3/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab3/src/main/java/com/drainshawty/lab3/answers/MainPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab3/src/test/java/com/drainshawty/lab3/AbstractPageTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab3/src/test/java/com/drainshawty/lab3/TestConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab3/src/test/java/com/drainshawty/lab3/answers/MainPageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,23 +45,85 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/hopeg/IdeaProjects/SoftwareTestingLabs&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "last_opened_file_path": "C:/Users/hopeg/IdeaProjects/SoftwareTestingLabs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.drainshawty.lab3.answers" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MainPageTest.testLogout">
+    <configuration name="MainPageTest.testCorrectLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.drainshawty.lab3.answers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.drainshawty.lab3.answers" />
+      <option name="MAIN_CLASS_NAME" value="com.drainshawty.lab3.answers.MainPageTest" />
+      <option name="METHOD_NAME" value="testCorrectLogin(org.openqa.selenium.WebDriver)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainPageTest.testIncorrectLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.drainshawty.lab3.answers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.drainshawty.lab3.answers" />
+      <option name="MAIN_CLASS_NAME" value="com.drainshawty.lab3.answers.MainPageTest" />
+      <option name="METHOD_NAME" value="testIncorrectLogin(org.openqa.selenium.WebDriver)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainPageTest.testLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.drainshawty.lab3.answers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.drainshawty.lab3.answers" />
+      <option name="MAIN_CLASS_NAME" value="com.drainshawty.lab3.answers.MainPageTest" />
+      <option name="METHOD_NAME" value="testLogout(org.openqa.selenium.WebDriver)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MainPageTest.testLogout" />
+        <item itemvalue="JUnit.MainPageTest.testIncorrectLogin" />
+        <item itemvalue="JUnit.MainPageTest.testCorrectLogin" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,7 +148,8 @@
       <workItem from="1713511100535" duration="250000" />
       <workItem from="1713511641668" duration="122000" />
       <workItem from="1713518888169" duration="4076000" />
-      <workItem from="1714426217746" duration="1422000" />
+      <workItem from="1714426217746" duration="2461000" />
+      <workItem from="1714494407201" duration="9736000" />
     </task>
     <servers />
   </component>
