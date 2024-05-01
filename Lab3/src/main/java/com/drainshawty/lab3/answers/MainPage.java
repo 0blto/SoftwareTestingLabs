@@ -4,13 +4,15 @@ import com.drainshawty.lab3.Page;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MainPage extends Page {
+
+    //USERSERV
 
     @FindBy(xpath = "//button[@class=\"h-8 m-2 p-2 text-white hover:bg-primaryLight body1 rounded flex items-center\"]")
     WebElement logInHeaderButton;
@@ -41,6 +43,36 @@ public class MainPage extends Page {
     @Getter
     WebElement appConfig;
 
+    //FUNCTIONALITY
+
+    ////Searching
+    @FindBy(xpath = "//*[@id=\"search-input\"]")
+    WebElement searchInput;
+
+    @FindBy(xpath = "//*[@id=\"best-answer\"]")
+    @Getter
+    WebElement bestAnswer;
+
+    @FindBy(xpath = "//*[@id=\"top-answer\"]")
+    @Getter
+    WebElement topAnswer;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/main/div[2]")
+    @Getter
+    WebElement categories;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div[2]")
+    @Getter
+    WebElement subCategories;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div[2]")
+    @Getter
+    WebElement questions;
+
+    //Profile
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[1]/div/div[4]/div[3]/span/div/div/div/button[1]/a")
+    WebElement profile;
+
     public boolean checkIfLogIn(String username) {
         String flag = (String) ((JavascriptExecutor) driver).executeScript(
                 "var scripts = document.querySelectorAll('script');" +
@@ -62,9 +94,46 @@ public class MainPage extends Page {
         submitLogInButton.click();
     }
 
+    public void fullLogInByHeaderButton(String email, String password) {
+        logInHeaderButton.click();
+        logInWithEmail.click();
+        emailOrUsernameInput.sendKeys(email);
+        passwordInput.sendKeys(password);
+        submitLogInButton.click();
+    }
+
     public void logout() {
         afterLogInImg.click();
         logoutButton.click();
+    }
+
+    public void trySearch(String query) {
+        searchInput.clear();
+        searchInput.sendKeys(query);
+        searchInput.sendKeys(Keys.ENTER);
+    }
+
+    public List<WebElement> getCategoriesLinks() {
+        return categories.findElements(
+                new By.ByXPath("*")
+        );
+    }
+
+    public List<WebElement> getSubCategoriesLinks() {
+        return subCategories.findElements(
+                new By.ByXPath("*")
+        );
+    }
+
+    public List<WebElement> getQuestionsLinks() {
+        return questions.findElements(
+                new By.ByXPath("*")
+        );
+    }
+
+    public void goToProfile() {
+        afterLogInImg.click();
+        profile.click();
     }
 
     public MainPage(WebDriver driver) {super(driver);}

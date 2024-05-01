@@ -8,11 +8,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class MainPageTest extends AbstractPageTest {
+
+    List<String> queries = List.of(
+            "how to find one fifth of 100",
+            "the valence of gold",
+            "Who was the serial killer from mishawaka Indiana?"
+    );
+
     @TestTemplate
     void testCorrectLogin(WebDriver driver) {
         MainPage mainPage = new MainPage(driver);
@@ -27,9 +35,19 @@ public class MainPageTest extends AbstractPageTest {
     void testIncorrectLogin(WebDriver driver) {
         MainPage mainPage = new MainPage(driver);
         initDriver(TestConfig.BASE_URI, driver);
-        mainPage.fullLogInByLink(TestConfig.USERNAME, "DETACHED");
+        mainPage.fullLogInByLink(TestConfig.USERNAME, "FORBIDDEN");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         assertThrows(TimeoutException.class, () -> wait.until(visibilityOf(mainPage.getAfterLogInImg())));
+    }
+
+    @TestTemplate
+    void testCorrectLoginByHeaderButton(WebDriver driver) {
+        MainPage mainPage = new MainPage(driver);
+        initDriver(TestConfig.BASE_URI, driver);
+        mainPage.fullLogInByHeaderButton(TestConfig.USERNAME, TestConfig.PASSWORD);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(visibilityOf(mainPage.getAfterLogInImg()));
+        assertTrue(mainPage.checkIfLogIn(TestConfig.USERNAME));
     }
 
     @TestTemplate
@@ -39,5 +57,32 @@ public class MainPageTest extends AbstractPageTest {
         mainPage.fullLogInByLink(TestConfig.USERNAME, TestConfig.PASSWORD);
         mainPage.logout();
         assertFalse(mainPage.checkIfLogIn(TestConfig.USERNAME));
+    }
+
+    @TestTemplate
+    void testSearch(WebDriver driver) {
+        MainPage mainPage = new MainPage(driver);
+        initDriver(TestConfig.BASE_URI, driver);
+        for (String query : queries) {
+            mainPage.trySearch(query);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getBestAnswer())));
+        }
+    }
+
+    @TestTemplate
+    void checkCategories(WebDriver driver) {
+        MainPage mainPage = new MainPage(driver);
+        initDriver(TestConfig.BASE_URI, driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        assertFalse(mainPage.getCategoriesLinks().isEmpty());
+        mainPage.getCategoriesLinks().get(0).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getSubCategories())));
+        assertFalse(mainPage.getSubCategoriesLinks().isEmpty());
+        mainPage.getSubCategoriesLinks().get(0).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getQuestions())));
+        assertTrue(mainPage.getQuestionsLinks().size() > 1);
+        mainPage.getQuestionsLinks().get(1).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getTopAnswer())));
     }
 }
