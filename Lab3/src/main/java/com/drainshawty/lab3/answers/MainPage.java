@@ -69,6 +69,19 @@ public class MainPage extends Page {
     @Getter
     WebElement questions;
 
+    @FindBy(xpath = "//*[@id=\"comment-input-box\"]")
+    WebElement commentInput;
+
+    @FindBy(xpath = "//*[@id=\"top-answer\"]/div[2]/span")
+    @Getter
+    WebElement errorSpan;
+
+    @FindBy(xpath = "//*[@id=\"primaryBgPrimary\"]")
+    WebElement moreComments;
+
+    @FindBy(xpath = "//*[@id=\"top-answer\"]/div[2]/div[5]")
+    WebElement comments;
+
     //Profile
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[1]/div/div[4]/div[3]/span/div/div/div/button[1]/a")
     WebElement profile;
@@ -113,27 +126,45 @@ public class MainPage extends Page {
         searchInput.sendKeys(Keys.ENTER);
     }
 
-    public List<WebElement> getCategoriesLinks() {
-        return categories.findElements(
+    private List<WebElement> getChildren(WebElement element) {
+        return element.findElements(
                 new By.ByXPath("*")
         );
+    }
+
+    public List<WebElement> getCategoriesLinks() {
+        return getChildren(categories);
     }
 
     public List<WebElement> getSubCategoriesLinks() {
-        return subCategories.findElements(
-                new By.ByXPath("*")
-        );
+        return getChildren(subCategories);
     }
 
     public List<WebElement> getQuestionsLinks() {
-        return questions.findElements(
-                new By.ByXPath("*")
-        );
+        return getChildren(questions);
+    }
+
+    public List<WebElement> getComments() {
+        return getChildren(comments);
     }
 
     public void goToProfile() {
         afterLogInImg.click();
         profile.click();
+    }
+
+    public void createComment(String msg) {
+        commentInput.clear();
+        commentInput.sendKeys(msg);
+        commentInput.sendKeys(Keys.ENTER);
+    }
+
+    public void extendComments() {
+        moreComments.click();
+    }
+
+    public String getCommentText(WebElement comment) {
+        return comment.findElement(new By.ByCssSelector("#secondaryColor")).getText();
     }
 
     public MainPage(WebDriver driver) {super(driver);}

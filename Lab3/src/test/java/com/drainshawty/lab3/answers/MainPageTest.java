@@ -85,4 +85,47 @@ public class MainPageTest extends AbstractPageTest {
         mainPage.getQuestionsLinks().get(1).click();
         assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getTopAnswer())));
     }
+
+    @TestTemplate
+    void commentWithoutLogIn(WebDriver driver) {
+        MainPage mainPage = new MainPage(driver);
+        initDriver(TestConfig.BASE_URI, driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        assertFalse(mainPage.getCategoriesLinks().isEmpty());
+        mainPage.getCategoriesLinks().get(0).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getSubCategories())));
+        assertFalse(mainPage.getSubCategoriesLinks().isEmpty());
+        mainPage.getSubCategoriesLinks().get(0).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getQuestions())));
+        assertTrue(mainPage.getQuestionsLinks().size() > 1);
+        mainPage.getQuestionsLinks().get(1).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getTopAnswer())));
+        mainPage.createComment("thx");
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getErrorSpan())));
+    }
+
+    @TestTemplate
+    void commentWithLogIn(WebDriver driver) throws InterruptedException {
+        String msg = "thx";
+        MainPage mainPage = new MainPage(driver);
+        initDriver(TestConfig.BASE_URI, driver);
+        mainPage.fullLogInByLink(TestConfig.USERNAME, TestConfig.PASSWORD);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        Thread.sleep(1000);
+        assertFalse(mainPage.getCategoriesLinks().isEmpty());
+        mainPage.getCategoriesLinks().get(0).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getSubCategories())));
+        assertFalse(mainPage.getSubCategoriesLinks().isEmpty());
+        mainPage.getSubCategoriesLinks().get(0).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getQuestions())));
+        assertTrue(mainPage.getQuestionsLinks().size() > 1);
+        mainPage.getQuestionsLinks().get(1).click();
+        assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getTopAnswer())));
+        mainPage.extendComments();
+        int commentsAmount = mainPage.getComments().size();
+        mainPage.createComment(msg);
+        Thread.sleep(1000);
+        assertEquals(commentsAmount + 1, mainPage.getComments().size());
+        assertEquals(msg, mainPage.getCommentText(mainPage.getComments().get(0)));
+    }
 }
