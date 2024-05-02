@@ -1,6 +1,6 @@
 package com.drainshawty.lab3.answers;
 
-import com.drainshawty.lab3.Page;
+import com.drainshawty.lab3.UI;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProfilePage extends Page {
+public class ProfileUI extends UI {
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div/div[2]/div/div[1]/div[3]/button[2]")
     WebElement editButton;
@@ -48,5 +48,5 @@ public class ProfilePage extends Page {
         usernameInput.sendKeys(username);
         submit.click();
     }
-    public ProfilePage(WebDriver driver) {super(driver);}
+    public ProfileUI(WebDriver driver) {super(driver);}
 }

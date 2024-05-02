@@ -11,10 +11,10 @@ import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class ProfilePageTest extends AbstractPageTest {
+public class ProfileUITest extends AbstractPageTest {
 
     void goToProfilePage(WebDriver driver) {
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         mainPage.fullLogInByHeaderButton(TestConfig.USERNAME, TestConfig.PASSWORD);
         mainPage.goToProfile();
@@ -26,7 +26,7 @@ public class ProfilePageTest extends AbstractPageTest {
     @TestTemplate
     void imageChangeTest(WebDriver driver) throws URISyntaxException, InterruptedException {
         goToProfilePage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
+        ProfileUI profilePage = new ProfileUI(driver);
         profilePage.uploadPhoto(getAbsolutePath("before.jpg"));
         Thread.sleep(2000);
         String beforeSrc = profilePage.getImgElement().getAttribute("src");
@@ -39,7 +39,7 @@ public class ProfilePageTest extends AbstractPageTest {
     void usernameChangeTest(WebDriver driver) throws InterruptedException {
         String tempName = "VIPERR";
         goToProfilePage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
+        ProfileUI profilePage = new ProfileUI(driver);
         profilePage.changeUsername(tempName);
         Thread.sleep(2000);
         assertEquals(tempName, profilePage.getUsernameHeader().getText(), "Имя не удалось поменять");

@@ -1,6 +1,6 @@
 package com.drainshawty.lab3.answers;
 
-import com.drainshawty.lab3.Page;
+import com.drainshawty.lab3.UI;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class MainPage extends Page {
+public class MainUI extends UI {
 
     //USERSERV
 
@@ -168,5 +168,5 @@ public class MainPage extends Page {
         return comment.findElement(new By.ByCssSelector("#secondaryColor")).getText();
     }
 
-    public MainPage(WebDriver driver) {super(driver);}
+    public MainUI(WebDriver driver) {super(driver);}
 }

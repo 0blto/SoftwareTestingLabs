@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-public class MainPageTest extends AbstractPageTest {
+public class MainUITest extends AbstractPageTest {
 
     List<String> queries = List.of(
             "how to find one fifth of 100",
@@ -23,7 +23,7 @@ public class MainPageTest extends AbstractPageTest {
 
     @TestTemplate
     void testCorrectLogin(WebDriver driver) {
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         mainPage.fullLogInByLink(TestConfig.USERNAME, TestConfig.PASSWORD);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -33,7 +33,7 @@ public class MainPageTest extends AbstractPageTest {
 
     @TestTemplate
     void testIncorrectLogin(WebDriver driver) {
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         mainPage.fullLogInByLink(TestConfig.USERNAME, "FORBIDDEN");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -42,7 +42,7 @@ public class MainPageTest extends AbstractPageTest {
 
     @TestTemplate
     void testCorrectLoginByHeaderButton(WebDriver driver) {
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         mainPage.fullLogInByHeaderButton(TestConfig.USERNAME, TestConfig.PASSWORD);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -52,7 +52,7 @@ public class MainPageTest extends AbstractPageTest {
 
     @TestTemplate
     void testLogout(WebDriver driver) {
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         mainPage.fullLogInByLink(TestConfig.USERNAME, TestConfig.PASSWORD);
         mainPage.logout();
@@ -61,7 +61,7 @@ public class MainPageTest extends AbstractPageTest {
 
     @TestTemplate
     void testSearch(WebDriver driver) {
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         for (String query : queries) {
             mainPage.trySearch(query);
@@ -72,7 +72,7 @@ public class MainPageTest extends AbstractPageTest {
 
     @TestTemplate
     void checkCategories(WebDriver driver) {
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
         assertFalse(mainPage.getCategoriesLinks().isEmpty());
@@ -88,7 +88,7 @@ public class MainPageTest extends AbstractPageTest {
 
     @TestTemplate
     void commentWithoutLogIn(WebDriver driver) {
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
         assertFalse(mainPage.getCategoriesLinks().isEmpty());
@@ -107,7 +107,7 @@ public class MainPageTest extends AbstractPageTest {
     @TestTemplate
     void commentWithLogIn(WebDriver driver) throws InterruptedException {
         String msg = "thx";
-        MainPage mainPage = new MainPage(driver);
+        MainUI mainPage = new MainUI(driver);
         initDriver(TestConfig.BASE_URI, driver);
         mainPage.fullLogInByLink(TestConfig.USERNAME, TestConfig.PASSWORD);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
