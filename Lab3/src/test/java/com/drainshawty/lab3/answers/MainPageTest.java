@@ -121,7 +121,7 @@ public class MainPageTest extends AbstractPageTest {
         assertTrue(mainPage.getQuestionsLinks().size() > 1);
         mainPage.getQuestionsLinks().get(1).click();
         assertDoesNotThrow(() -> wait.until(visibilityOf(mainPage.getTopAnswer())));
-        mainPage.extendComments();
+        if (mainPage.getMoreComments().isDisplayed()) mainPage.extendComments();
         int commentsAmount = mainPage.getComments().size();
         mainPage.createComment(msg);
         Thread.sleep(1000);

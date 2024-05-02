@@ -77,6 +77,7 @@ public class MainPage extends Page {
     WebElement errorSpan;
 
     @FindBy(xpath = "//*[@id=\"primaryBgPrimary\"]")
+    @Getter
     WebElement moreComments;
 
     @FindBy(xpath = "//*[@id=\"top-answer\"]/div[2]/div[5]")
