@@ -126,6 +126,6 @@ public class MainUITest extends AbstractPageTest {
         mainPage.createComment(msg);
         Thread.sleep(1000);
         assertEquals(commentsAmount + 1, mainPage.getComments().size());
-        assertEquals(msg, mainPage.getCommentText(mainPage.getComments().get(0)));
+        assertEquals(msg, mainPage.getCommentText(mainPage.getComments().get(mainPage.getComments().size()-1)));
     }
 }

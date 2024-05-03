@@ -88,16 +88,15 @@ public class MainUI extends UI {
     WebElement profile;
 
     public boolean checkIfLogIn(String username) {
-        String flag = (String) ((JavascriptExecutor) driver).executeScript(
-                "var scripts = document.querySelectorAll('script');" +
-                        "for (var i = 0; i < scripts.length; i++) {" +
+        return (Boolean) ((JavascriptExecutor) driver).executeScript(
+                "let scripts = document.querySelectorAll('script');" +
+                        "for (let i = 0; i < scripts.length; i++) {" +
                         "    if (scripts[i].innerHTML.includes('" + username + "')) {" +
-                        "        return 'POBEDA';" +
+                        "        return true;" +
                         "    }" +
                         "}" +
-                        "return 'PORAZHENIYE';"
+                        "return false;"
         );
-        return flag.equals("POBEDA");
     }
 
     public void fullLogInByLink(String email, String password) {
